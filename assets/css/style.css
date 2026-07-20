@@ -388,13 +388,18 @@ html[data-theme="light"] .bg-mesh {
 .hero-stats span { color: var(--text-dim); font-size: 0.85rem; }
 
 /* Hero artwork */
-.hero-art { display: grid; place-items: center; }
+.hero-art {
+  display: grid;
+  place-items: center;
+  position: relative;
+}
 
 .avatar-wrap {
   position: relative;
   width: min(340px, 80vw);
   aspect-ratio: 1;
   margin-inline: 12px;
+  z-index: 2; /* sit above the peeker so the character hides behind the photo */
 }
 
 .avatar-ring {
@@ -418,6 +423,94 @@ html[data-theme="light"] .bg-mesh {
   object-fit: cover;
 }
 
+/* Cartoon character that peeks from behind the avatar --------- */
+/* The SVG character slides UP from below the avatar's top edge,
+   grips the ring with both hands, waves, and slides back down. */
+.peeker {
+  position: absolute;
+  z-index: 1;              /* sits BEHIND the avatar-wrap so the photo hides the body */
+  bottom: 92%;             /* anchor above the avatar's top edge */
+  left: 50%;
+  width: 150px;
+  height: 180px;
+  pointer-events: none;
+  transform: translate(-50%, 60px) scale(0.95);
+  opacity: 0;
+  animation: peeker-pop 6.5s ease-in-out infinite;
+  animation-delay: 1s;
+  will-change: transform, opacity;
+}
+
+.peeker-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,.45));
+  /* The SVG viewBox is 200x240 — face is at y=108 (45% from top).
+     Shift the image UP so the head sits at the top of the container. */
+  object-fit: cover;
+  object-position: center 18%;
+  animation: peeker-bob 2.4s ease-in-out infinite;
+}
+
+/* "Hi! 👋" speech bubble — appears next to the head when peeking */
+.peeker-bubble {
+  position: absolute;
+  top: 4%;
+  right: -10%;
+  background: #fff;
+  color: #1a1230;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 6px 12px;
+  border-radius: 14px;
+  border: 2px solid #1a1230;
+  box-shadow: 0 4px 10px rgba(0,0,0,.35);
+  white-space: nowrap;
+  animation: peeker-bubble-bob 1.6s ease-in-out infinite;
+  z-index: 3;
+  opacity: 0;
+  animation: peeker-bubble-show 6.5s ease-in-out infinite;
+  animation-delay: 1s;
+}
+.peeker-wave {
+  display: inline-block;
+  transform-origin: 70% 70%;
+  animation: peeker-wave-emoji 1.2s ease-in-out infinite;
+}
+
+/* Animations */
+@keyframes peeker-pop {
+  0%,   6%  { transform: translate(-50%, 60px) scale(0.95); opacity: 0; }
+  14%, 24% { transform: translate(-50%, 0px)  scale(1);    opacity: 1; }
+  60%, 72% { transform: translate(-50%, 0px)  scale(1);    opacity: 1; }
+  88%, 100%{ transform: translate(-50%, 60px) scale(0.95); opacity: 0; }
+}
+@keyframes peeker-bob {
+  0%, 100% { transform: translateY(0)    rotate(-1deg); }
+  50%      { transform: translateY(-3px) rotate(1deg);  }
+}
+@keyframes peeker-wave-emoji {
+  0%, 100% { transform: rotate(0deg); }
+  25%      { transform: rotate(22deg); }
+  75%      { transform: rotate(-18deg); }
+}
+@keyframes peeker-bubble-show {
+  0%,   6%  { opacity: 0; transform: translateY(6px); }
+  20%, 65% { opacity: 1; transform: translateY(0); }
+  80%, 100%{ opacity: 0; transform: translateY(6px); }
+}
+
+/* Hide on small screens — too cluttered with the float-tags */
+@media (max-width: 720px) {
+  .peeker { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .peeker, .peeker-img { animation: none; opacity: 1; transform: none; }
+  .peeker-bubble, .peeker-wave { animation: none; opacity: 1; transform: none; }
+}
+
 .float-tag {
   position: absolute;
   display: inline-flex;
@@ -435,7 +528,7 @@ html[data-theme="light"] .bg-mesh {
 
 .float-tag i { color: var(--primary-2); }
 
-.float-tag.t1 { top: 4%;  left: -10%; }
+.float-tag.t1 { top: 14%; left: -10%; }
 .float-tag.t2 { top: 18%; right: -14%; animation-delay: -1s; }
 .float-tag.t3 { top: 50%; left: -20%; animation-delay: -2s; }
 .float-tag.t4 { bottom: 6%; right: -8%; animation-delay: -3s; }

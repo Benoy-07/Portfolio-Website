@@ -1,0 +1,45 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240">
+  <defs>
+    <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffd6a8"/>
+      <stop offset="1" stop-color="#f5a96b"/>
+    </linearGradient>
+    <linearGradient id="hair" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3a2418"/>
+      <stop offset="1" stop-color="#1a0e08"/>
+    </linearGradient>
+    <linearGradient id="shirt" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5b8cff"/>
+      <stop offset="1" stop-color="#3a5fbf"/>
+    </linearGradient>
+  </defs>
+  <path d="M28 175 Q18 162 26 148 Q34 138 48 144 Q58 152 56 166 L52 184 Z" fill="url(#skin)" stroke="#1a1230" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M30 156 Q38 154 46 158" stroke="#1a1230" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M30 164 Q40 162 50 166" stroke="#1a1230" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M30 172 Q40 170 48 174" stroke="#1a1230" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <g transform="translate(150 36)">
+    <path d="M-4 70 Q-8 36 0 6 L10 6 Q16 36 14 70 Z" fill="url(#skin)" stroke="#1a1230" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M-4 60 Q6 66 16 60 L14 70 Q6 76 -4 70 Z" fill="url(#shirt)" stroke="#1a1230" stroke-width="3"/>
+    <ellipse cx="6" cy="-6" rx="16" ry="18" fill="url(#skin)" stroke="#1a1230" stroke-width="3"/>
+    <path d="M-8 -8 Q-16 -6 -14 0 Q-10 2 -4 -2" fill="url(#skin)" stroke="#1a1230" stroke-width="2.5"/>
+    <path d="M0 -16 Q4 -16 6 -12" stroke="#1a1230" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M8 -18 Q12 -18 14 -14" stroke="#1a1230" stroke-width="2" fill="none" stroke-linecap="round"/>
+  </g>
+  <path d="M30 240 Q30 200 60 190 Q100 184 140 190 Q170 200 170 240 Z" fill="url(#shirt)" stroke="#1a1230" stroke-width="3" stroke-linejoin="round"/>
+  <rect x="86" y="150" width="28" height="22" rx="6" fill="url(#skin)" stroke="#1a1230" stroke-width="3"/>
+  <path d="M52 88 Q48 60 76 50 Q100 42 124 50 Q150 60 150 92 L150 118 Q142 96 130 92 L70 92 Q58 96 52 118 Z" fill="url(#hair)" stroke="#1a1230" stroke-width="3" stroke-linejoin="round"/>
+  <ellipse cx="100" cy="108" rx="46" ry="50" fill="url(#skin)" stroke="#1a1230" stroke-width="3"/>
+  <ellipse cx="54" cy="112" rx="6" ry="9" fill="url(#skin)" stroke="#1a1230" stroke-width="2.5"/>
+  <ellipse cx="146" cy="112" rx="6" ry="9" fill="url(#skin)" stroke="#1a1230" stroke-width="2.5"/>
+  <path d="M60 82 Q72 58 100 56 Q130 58 140 84 Q130 72 116 74 Q108 82 96 78 Q80 74 70 84 Z" fill="url(#hair)" stroke="#1a1230" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M74 100 Q82 94 92 100" stroke="#1a1230" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M108 100 Q118 94 126 100" stroke="#1a1230" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <ellipse cx="84" cy="114" rx="7" ry="9" fill="#1a1230"/>
+  <ellipse cx="116" cy="114" rx="7" ry="9" fill="#1a1230"/>
+  <circle cx="86" cy="111" r="2.6" fill="#ffffff"/>
+  <circle cx="118" cy="111" r="2.6" fill="#ffffff"/>
+  <circle cx="70" cy="126" r="9" fill="#ff9a8b" opacity="0.55"/>
+  <circle cx="130" cy="126" r="9" fill="#ff9a8b" opacity="0.55"/>
+  <path d="M88 134 Q100 146 112 134" stroke="#1a1230" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M95 138 Q100 143 105 138" fill="#ff8a9e" stroke="#1a1230" stroke-width="1.5"/>
+</svg>
