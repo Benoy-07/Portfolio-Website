@@ -16,7 +16,7 @@
 declare(strict_types=1);
 
 $config = [
-    'to'        => 'hello@yourname.dev',   // ← change to your real email
+    'to'        => 'benoy.cse7@gmail.com',     // ← destination email
     'fromEmail' => 'no-reply@yourname.dev',
     'logFile'   => __DIR__ . '/messages.log',
 ];

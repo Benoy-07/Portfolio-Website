@@ -2,6 +2,7 @@
    - Year stamp
    - Mobile menu toggle
    - Theme toggle (persisted)
+   - Animated particle-network background canvas
    - Scroll progress bar
    - Scroll-spy active nav link
    - Smooth-scroll for in-page anchors
@@ -20,6 +21,141 @@
   /* Year ------------------------------------------------------- */
   const yearEl = $('#year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  /* Animated particle-network background ---------------------- */
+  (function initBgCanvas() {
+    const canvas = $('#bgCanvas');
+    if (!canvas || canvas.__bgInited) return;
+    canvas.__bgInited = true;
+
+    let ctx;
+    try { ctx = canvas.getContext('2d', { alpha: true }); }
+    catch (e) { return; }                  // no canvas support → just skip
+    if (!ctx) return;
+
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    let w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let particles = [];
+    let mouse = { x: -9999, y: -9999, active: false };
+    let rafId = null;
+
+    const ACCENT = ['124,92,255', '0,212,255', '255,92,138'];
+
+    const resize = () => {
+      w = window.innerWidth;
+      h = window.innerHeight;
+      canvas.style.width  = w + 'px';
+      canvas.style.height = h + 'px';
+      canvas.width  = Math.floor(w * dpr);
+      canvas.height = Math.floor(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      seed();
+    };
+
+    const seed = () => {
+      const density = Math.min(110, Math.floor((w * h) / 18000));
+      particles = Array.from({ length: density }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+        r: Math.random() * 1.8 + 0.6,
+        color: ACCENT[(Math.random() * ACCENT.length) | 0],
+        phase: Math.random() * Math.PI * 2,
+      }));
+    };
+
+    const tick = (t) => {
+      ctx.clearRect(0, 0, w, h);
+
+      // Update + draw particles
+      for (const p of particles) {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // gentle wrap
+        if (p.x < -10) p.x = w + 10;
+        if (p.x > w + 10) p.x = -10;
+        if (p.y < -10) p.y = h + 10;
+        if (p.y > h + 10) p.y = -10;
+
+        // mouse repulsion
+        if (mouse.active) {
+          const dx = p.x - mouse.x;
+          const dy = p.y - mouse.y;
+          const d2 = dx * dx + dy * dy;
+          if (d2 < 16000) {
+            const d = Math.sqrt(d2) || 1;
+            const force = (1 - d / 130) * 0.6;
+            p.x += (dx / d) * force;
+            p.y += (dy / d) * force;
+          }
+        }
+
+        // soft pulsing glow
+        const pulse = 0.6 + Math.sin(t * 0.001 + p.phase) * 0.4;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r * (0.9 + pulse * 0.4), 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${p.color}, ${0.55 * pulse})`;
+        ctx.shadowBlur = 12;
+        ctx.shadowColor = `rgba(${p.color}, 0.9)`;
+        ctx.fill();
+      }
+      ctx.shadowBlur = 0;
+
+      // Connecting lines
+      const LINK = 130;
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const a = particles[i], b = particles[j];
+          const dx = a.x - b.x, dy = a.y - b.y;
+          const d = Math.sqrt(dx * dx + dy * dy);
+          if (d < LINK) {
+            const alpha = (1 - d / LINK) * 0.35;
+            ctx.strokeStyle = `rgba(${a.color}, ${alpha})`;
+            ctx.lineWidth = 0.6;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Cursor highlight ring
+      if (mouse.active) {
+        const grad = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 140);
+        grad.addColorStop(0, 'rgba(124, 92, 255, 0.25)');
+        grad.addColorStop(1, 'rgba(124, 92, 255, 0)');
+        ctx.fillStyle = grad;
+        ctx.fillRect(mouse.x - 140, mouse.y - 140, 280, 280);
+      }
+
+      rafId = requestAnimationFrame(tick);
+    };
+
+    const start = () => {
+      if (reduce) return;          // honor reduced-motion preference
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(tick);
+    };
+
+    window.addEventListener('resize', resize, { passive: true });
+    window.addEventListener('mousemove', e => {
+      mouse.x = e.clientX; mouse.y = e.clientY; mouse.active = true;
+    }, { passive: true });
+    window.addEventListener('mouseout', () => { mouse.active = false; });
+
+    // Pause when tab is hidden to save battery
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) cancelAnimationFrame(rafId);
+      else start();
+    });
+
+    resize();
+    start();
+  })();
 
   /* Theme toggle ---------------------------------------------- */
   const themeBtn = $('#themeToggle');
@@ -124,7 +260,7 @@
   /* Typed text in hero ---------------------------------------- */
   const typedEl = $('#typed');
   if (typedEl) {
-    const words = ['Web Developer', 'Frontend Engineer', 'PHP Backend Dev', 'UI Designer'];
+    const words = ['Flutter Developer', 'Full-Stack Web Developer', 'Frontend Engineer', 'Backend Engineer'];
     let wi = 0, ci = 0, deleting = false;
 
     const tick = () => {

@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Personal portfolio of Your Name — Web Developer. Services, projects, education and contact." />
-  <meta name="author" content="Your Name" />
-  <title>Your Name · Portfolio</title>
+  <meta name="description" content="Personal portfolio of Md Hajek Anjum Benoy — Flutter & Full-Stack Web Developer. Services, projects, education and contact." />
+  <meta name="author" content="Md Hajek Anjum Benoy" />
+  <title>Benoy's Portfolio</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,6 +13,8 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="stylesheet" href="assets/css/style.css" />
+  <!-- Favicon: try JPG first, fall back to SVG so the tab always has an icon -->
+  <link rel="icon" type="image/jpeg" href="assets/img/favicon.jpg" sizes="any" />
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
 </head>
 <body>
@@ -20,6 +22,8 @@
   <div class="scroll-progress" id="scrollProgress"></div>
 
   <!-- Animated background -->
+  <div class="bg-mesh" aria-hidden="true"></div>
+  <canvas class="bg-canvas" id="bgCanvas" aria-hidden="true"></canvas>
   <div class="bg-orbs" aria-hidden="true">
     <span></span><span></span><span></span>
   </div>
@@ -28,7 +32,7 @@
   <header class="navbar" id="navbar">
     <a href="#home" class="brand">
       <span class="brand-mark">&lt;/&gt;</span>
-      <span class="brand-text">Your<span>Name</span></span>
+      <span class="brand-text">Hajek<span>Benoy</span></span>
     </a>
 
     <nav class="nav-links" id="navLinks">
@@ -56,12 +60,13 @@
         <div class="hero-text reveal">
           <span class="pill">👋 Hello, I'm</span>
           <h1 class="hero-title">
-            <span class="gradient-text">Your Name</span><br />
+            <span class="gradient-text">Md Hajek Anjum Benoy</span><br />
             <span class="typed" id="typed"></span><span class="caret">|</span>
           </h1>
           <p class="hero-sub">
-            A passionate <strong>Web Developer</strong> crafting fast, accessible and
-            beautiful digital experiences with HTML, CSS, JavaScript and PHP.
+            A passionate <strong>Flutter App Developer</strong> &amp; <strong>Full-Stack Web Developer</strong>
+            crafting fast, accessible and beautiful digital experiences — from mobile apps to
+            production backends.
           </p>
           <div class="hero-cta">
             <a href="#projects" class="btn btn-primary">
@@ -72,20 +77,20 @@
             </a>
           </div>
           <div class="hero-stats">
-            <div><strong data-count="25">0</strong><span>Projects</span></div>
-            <div><strong data-count="15">0</strong><span>Clients</span></div>
-            <div><strong data-count="3">0</strong><span>Years Exp.</span></div>
+            <div><strong data-count="20">0</strong><span>Projects</span></div>
+            <div><strong data-count="10">0</strong><span>Clients</span></div>
+            <div><strong data-count="2">0</strong><span>Years Exp.</span></div>
           </div>
         </div>
 
         <div class="hero-art reveal">
           <div class="avatar-wrap">
             <div class="avatar-ring"></div>
-            <img src="assets/img/avatar.svg" alt="Your Name avatar" class="avatar" />
-            <span class="float-tag t1"><i class="fa-brands fa-html5"></i> HTML5</span>
-            <span class="float-tag t2"><i class="fa-brands fa-css3-alt"></i> CSS3</span>
+            <img src="assets/img/avatar.jpg" alt="Md Hajek Anjum Benoy" class="avatar" />
+            <span class="float-tag t1"><i class="fa-solid fa-mobile-screen"></i> Flutter</span>
+            <span class="float-tag t2"><i class="fa-brands fa-html5"></i> HTML5</span>
             <span class="float-tag t3"><i class="fa-brands fa-js"></i> JS</span>
-            <span class="float-tag t4"><i class="fa-brands fa-php"></i> PHP</span>
+            <span class="float-tag t4"><i class="fa-solid fa-database"></i> Backend</span>
           </div>
         </div>
       </div>
@@ -128,42 +133,42 @@
 
         <div class="cards-grid">
           <article class="card reveal">
-            <div class="card-icon"><i class="fa-solid fa-display"></i></div>
-            <h3>Frontend Development</h3>
-            <p>Pixel-perfect, responsive interfaces using HTML5, CSS3 and modern JavaScript.</p>
+            <div class="card-icon"><i class="fa-brands fa-flutter"></i></div>
+            <h3>Flutter App Development</h3>
+            <p>Cross-platform mobile apps with Flutter — beautiful UIs and a solid backend layer for every project.</p>
             <ul>
-              <li>Responsive layouts</li>
-              <li>Animations & interactions</li>
-              <li>Accessibility-first</li>
+              <li>Cross-platform (iOS &amp; Android)</li>
+              <li>Frontend UI &amp; integrations</li>
+              <li>Backend connectivity (Firebase / REST)</li>
+            </ul>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon"><i class="fa-solid fa-layer-group"></i></div>
+            <h3>Full-Stack Web Development</h3>
+            <p>End-to-end web apps — from responsive frontends to secure server-side logic and databases.</p>
+            <ul>
+              <li>HTML, CSS, JS frontends</li>
+              <li>PHP / Node backends</li>
+              <li>Database design &amp; APIs</li>
             </ul>
           </article>
           <article class="card reveal">
             <div class="card-icon"><i class="fa-solid fa-server"></i></div>
-            <h3>Backend with PHP</h3>
-            <p>Secure, lightweight PHP backends — contact forms, APIs and CMS glue.</p>
+            <h3>Backend &amp; APIs</h3>
+            <p>Secure, lightweight backends — authentication, form handling and clean REST-style endpoints.</p>
             <ul>
-              <li>Form handling & validation</li>
-              <li>REST-style endpoints</li>
+              <li>PHP / Node services</li>
+              <li>Database modeling</li>
               <li>Email automation</li>
             </ul>
           </article>
           <article class="card reveal">
-            <div class="card-icon"><i class="fa-solid fa-palette"></i></div>
-            <h3>UI / UX Design</h3>
-            <p>Clean, modern design systems focused on clarity and conversion.</p>
-            <ul>
-              <li>Wireframes & mockups</li>
-              <li>Design tokens</li>
-              <li>Prototyping</li>
-            </ul>
-          </article>
-          <article class="card reveal">
             <div class="card-icon"><i class="fa-solid fa-bolt"></i></div>
-            <h3>Performance & SEO</h3>
+            <h3>Performance &amp; SEO</h3>
             <p>Fast load times and search-friendly markup out of the box.</p>
             <ul>
               <li>Core Web Vitals</li>
-              <li>Meta & schema</li>
+              <li>Meta &amp; schema</li>
               <li>Image optimization</li>
             </ul>
           </article>
@@ -257,33 +262,39 @@
           <li class="reveal">
             <span class="dot"></span>
             <div class="t-content">
-              <span class="t-date">2022 — 2025</span>
-              <h3>B.Sc. in Computer Science</h3>
-              <p>University of Example — Focused on web technologies, databases and software engineering.</p>
+              <span class="t-date">2023 — Present</span>
+              <div class="t-head">
+                <img src="assets/img/varsity.jpg" alt="PSTU campus" class="t-thumb" />
+                <div>
+                  <h3>B.Sc. Engineering in CSE</h3>
+                  <p>Patuakhali Science and Technology University · Current CGPA: <strong>3.41</strong></p>
+                </div>
+              </div>
             </div>
           </li>
           <li class="reveal">
             <span class="dot"></span>
             <div class="t-content">
-              <span class="t-date">2021 — 2022</span>
-              <h3>Higher Secondary (Science)</h3>
-              <p>Example College — Mathematics & Computer Science major.</p>
-            </div>
-          </li>
-          <li class="reveal">
-            <span class="dot"></span>
-            <div class="t-content">
-              <span class="t-date">2020</span>
-              <h3>Secondary School</h3>
-              <p>Example School — Graduated with distinction.</p>
+              <span class="t-date">Graduated 2021</span>
+              <div class="t-head">
+                <img src="assets/img/college.jpg" alt="Ananda Moha College" class="t-thumb" />
+                <div>
+                  <h3>Higher Secondary · Science</h3>
+                  <p>Govt Ananda Moha College, Mymensingh · GPA: <strong>5.00 / 5.00</strong></p>
+                </div>
+              </div>
             </div>
           </li>
           <li class="reveal">
             <span class="dot"></span>
             <div class="t-content">
               <span class="t-date">Ongoing</span>
-              <h3>Self-Learning</h3>
-              <p>freeCodeCamp, MDN, and open-source contributions to sharpen my craft.</p>
+              <div class="t-head">
+                <div>
+                  <h3>Self-Learning</h3>
+                  <p>Flutter, full-stack web development and open-source contributions to sharpen my craft.</p>
+                </div>
+              </div>
             </div>
           </li>
         </ol>
@@ -302,13 +313,12 @@
         <div class="contact-grid">
           <div class="contact-info reveal">
             <h3>Get in touch</h3>
-            <p><i class="fa-solid fa-envelope"></i> hello@yourname.dev</p>
-            <p><i class="fa-solid fa-location-dot"></i> Your City, Your Country</p>
+            <p><i class="fa-solid fa-envelope"></i> benoy.cse7@gmail.com</p>
+            <p><i class="fa-solid fa-location-dot"></i> Patuakhali, Bangladesh</p>
             <div class="socials">
-              <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-              <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-              <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-              <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="https://www.facebook.com/share/1EVM1RdZfU/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+              <a href="https://github.com/benoy-07" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+              <a href="https://www.linkedin.com/in/md-hajek-anjum-benoy-76b601281?utm_source=share&amp;utm_campaign=share_via&amp;utm_content=profile&amp;utm_medium=android_app" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
             </div>
           </div>
 
@@ -343,7 +353,7 @@
 
   <footer class="footer">
     <div class="container">
-      <p>© <span id="year"></span> Your Name · Built with HTML, CSS, JS &amp; PHP.</p>
+      <p>© <span id="year"></span> Md Hajek Anjum Benoy · Built with HTML, CSS, JS &amp; PHP.</p>
       <a href="#home" class="to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
     </div>
   </footer>

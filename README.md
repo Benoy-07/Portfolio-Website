@@ -1,14 +1,26 @@
-# Portfolio Website
+# Md Hajek Anjum Benoy · Portfolio
 
 A modern, responsive personal portfolio built with **HTML, CSS, JavaScript** and a small **PHP** backend for the contact form.
 
 ## ✨ Features
 - Hero, Services, Projects, Education and Contact sections — all reachable from the navbar
-- Animated gradient UI with dark / light theme toggle (persisted)
+- Animated canvas particle-network + animated gradient mesh background
+- Dark / light theme toggle (persisted)
 - Smooth-scroll, scroll-spy nav, reveal-on-scroll animations, pointer-tracking card glow
 - Mobile-friendly responsive layout
 - PHP contact handler with validation, honeypot anti-spam and optional message logging
 - GitHub Pages ready (PHP gracefully falls back to a friendly notice on static hosts)
+
+## 👤 About
+- **Name:** Md Hajek Anjum Benoy
+- **Focus:** Flutter app development (frontend & backend) · Full-stack web development
+- **Currently:** B.Sc. Engineering in CSE at Patuakhali Science and Technology University (CGPA 3.41)
+- **Higher Secondary:** Govt Ananda Moha College, Mymensingh — GPA 5.00 / 5.00 (Science, 2021)
+
+## 🔗 Links
+- **Facebook:** https://www.facebook.com/share/1EVM1RdZfU/
+- **GitHub:** https://github.com/benoy-07
+- **LinkedIn:** https://www.linkedin.com/in/md-hajek-anjum-benoy-76b601281
 
 ## 📁 Structure
 ```
@@ -19,7 +31,11 @@ A modern, responsive personal portfolio built with **HTML, CSS, JavaScript** and
 ├── assets/
 │   ├── css/style.css
 │   ├── js/script.js
-│   └── img/                # avatar.svg, favicon.svg
+│   └── img/
+│       ├── avatar.jpg      # Your profile photo
+│       ├── favicon.jpg
+│       ├── varsity.jpg     # PSTU campus / logo (Education timeline)
+│       └── college.jpg     # Ananda Moha College (Education timeline)
 └── php/
     └── contact.php         # POST handler for the contact form
 ```
@@ -39,8 +55,8 @@ php -S localhost:8000
 > The contact form posts to `php/contact.php`. On GitHub Pages the JS detects the static host and shows an inline notice instead. To enable real email delivery, host the `php/` folder on any PHP-capable host (e.g. a small VPS, Render, Railway, InfinityFree) and update `form.action` in `index.html` to point at that endpoint.
 
 ## 🛠 Customize
-- Edit **name, bio, links** in `index.html`.
-- Swap `assets/img/avatar.svg` for your own photo (use the same filename or update the `<img src>`).
+- Edit **name, bio, links, project details** in `index.html`.
+- Swap `assets/img/avatar.jpg`, `varsity.jpg` and `college.jpg` with your own images (keep the same filenames or update the `<img src>` and CSS references).
 - Update **destination email** in `php/contact.php` (`$config['to']`).
 - Tweak colors in the `:root` CSS variables inside `assets/css/style.css`.
 
