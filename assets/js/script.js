@@ -183,8 +183,10 @@
   const menuBtn = $('#menuToggle');
   const navLinks = $('#navLinks');
   menuBtn?.addEventListener('click', () => {
-    menuBtn.classList.toggle('open');
-    navLinks.classList.toggle('open');
+    const willOpen = !navLinks.classList.contains('open');
+    menuBtn.classList.toggle('open', willOpen);
+    navLinks.classList.toggle('open', willOpen);
+    document.body.style.overflow = willOpen ? 'hidden' : '';
   });
 
   // Close mobile menu when a link is clicked
@@ -192,7 +194,26 @@
     link.addEventListener('click', () => {
       menuBtn?.classList.remove('open');
       navLinks?.classList.remove('open');
+      document.body.style.overflow = '';
     });
+  });
+
+  // Close mobile menu on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navLinks?.classList.contains('open')) {
+      menuBtn?.classList.remove('open');
+      navLinks.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+
+  // Close mobile menu if window resized to desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 720 && navLinks?.classList.contains('open')) {
+      menuBtn?.classList.remove('open');
+      navLinks.classList.remove('open');
+      document.body.style.overflow = '';
+    }
   });
 
   /* Scroll progress ------------------------------------------- */
@@ -263,21 +284,46 @@
     const words = ['Flutter Developer', 'Full-Stack Web Developer', 'Frontend Engineer', 'Backend Engineer'];
     let wi = 0, ci = 0, deleting = false;
 
+    // Respect reduced-motion users
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Pause briefly when the tab is hidden, then resume cleanly
+    let paused = false;
+    document.addEventListener('visibilitychange', () => { paused = document.hidden; });
+
     const tick = () => {
+      if (paused) { setTimeout(tick, 400); return; }
       const w = words[wi];
       typedEl.textContent = w.slice(0, ci);
 
+      if (reduced) {
+        // Just cycle through the words without typing animation
+        wi = (wi + 1) % words.length;
+        typedEl.textContent = words[wi];
+        setTimeout(tick, 2400);
+        return;
+      }
+
       if (!deleting) {
         ci++;
-        if (ci > w.length) { deleting = true; setTimeout(tick, 1400); return; }
-        setTimeout(tick, 90);
+        if (ci > w.length) {
+          deleting = true;
+          setTimeout(tick, 2200);   // longer hold so the full phrase stays visible
+          return;
+        }
+        setTimeout(tick, 140);       // slower typing
       } else {
         ci--;
-        if (ci < 0) { deleting = false; wi = (wi + 1) % words.length; setTimeout(tick, 200); return; }
-        setTimeout(tick, 45);
+        if (ci < 0) {
+          deleting = false;
+          wi = (wi + 1) % words.length;
+          setTimeout(tick, 600);     // smoother pause before next word
+          return;
+        }
+        setTimeout(tick, 70);        // smoother delete
       }
     };
-    setTimeout(tick, 600);
+    setTimeout(tick, 700);
   }
 
   /* Stat counters --------------------------------------------- */
