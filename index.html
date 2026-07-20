@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Personal portfolio of Your Name — Web Developer. Services, projects, education and contact." />
+  <meta name="author" content="Your Name" />
+  <title>Your Name · Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+</head>
+<body>
+  <!-- Scroll progress bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Animated background -->
+  <div class="bg-orbs" aria-hidden="true">
+    <span></span><span></span><span></span>
+  </div>
+
+  <!-- Navbar -->
+  <header class="navbar" id="navbar">
+    <a href="#home" class="brand">
+      <span class="brand-mark">&lt;/&gt;</span>
+      <span class="brand-text">Your<span>Name</span></span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#home" class="nav-link active" data-target="home">Home</a>
+      <a href="#services" class="nav-link" data-target="services">Services</a>
+      <a href="#projects" class="nav-link" data-target="projects">Projects</a>
+      <a href="#education" class="nav-link" data-target="education">Education</a>
+      <a href="#contact" class="nav-link" data-target="contact">Contact</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section id="home" class="section hero">
+      <div class="container hero-grid">
+        <div class="hero-text reveal">
+          <span class="pill">👋 Hello, I'm</span>
+          <h1 class="hero-title">
+            <span class="gradient-text">Your Name</span><br />
+            <span class="typed" id="typed"></span><span class="caret">|</span>
+          </h1>
+          <p class="hero-sub">
+            A passionate <strong>Web Developer</strong> crafting fast, accessible and
+            beautiful digital experiences with HTML, CSS, JavaScript and PHP.
+          </p>
+          <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary">
+              <i class="fa-solid fa-rocket"></i> View Projects
+            </a>
+            <a href="#contact" class="btn btn-ghost">
+              <i class="fa-regular fa-paper-plane"></i> Contact Me
+            </a>
+          </div>
+          <div class="hero-stats">
+            <div><strong data-count="25">0</strong><span>Projects</span></div>
+            <div><strong data-count="15">0</strong><span>Clients</span></div>
+            <div><strong data-count="3">0</strong><span>Years Exp.</span></div>
+          </div>
+        </div>
+
+        <div class="hero-art reveal">
+          <div class="avatar-wrap">
+            <div class="avatar-ring"></div>
+            <img src="assets/img/avatar.svg" alt="Your Name avatar" class="avatar" />
+            <span class="float-tag t1"><i class="fa-brands fa-html5"></i> HTML5</span>
+            <span class="float-tag t2"><i class="fa-brands fa-css3-alt"></i> CSS3</span>
+            <span class="float-tag t3"><i class="fa-brands fa-js"></i> JS</span>
+            <span class="float-tag t4"><i class="fa-brands fa-php"></i> PHP</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick overview cards so "all sections available in home" feels true -->
+      <div class="container">
+        <div class="quick-grid">
+          <a href="#services" class="quick-card reveal">
+            <i class="fa-solid fa-gripes"></i>
+            <h3>Services</h3>
+            <p>Web apps, landing pages, APIs & more.</p>
+          </a>
+          <a href="#projects" class="quick-card reveal">
+            <i class="fa-solid fa-code"></i>
+            <h3>Projects</h3>
+            <p>Selected work and case studies.</p>
+          </a>
+          <a href="#education" class="quick-card reveal">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h3>Education</h3>
+            <p>My learning journey & degrees.</p>
+          </a>
+          <a href="#contact" class="quick-card reveal">
+            <i class="fa-solid fa-envelope"></i>
+            <h3>Contact</h3>
+            <p>Let's build something great.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="section">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="kicker">What I offer</span>
+          <h2>My <span class="gradient-text">Services</span></h2>
+          <p>End-to-end web solutions tailored to your goals.</p>
+        </header>
+
+        <div class="cards-grid">
+          <article class="card reveal">
+            <div class="card-icon"><i class="fa-solid fa-display"></i></div>
+            <h3>Frontend Development</h3>
+            <p>Pixel-perfect, responsive interfaces using HTML5, CSS3 and modern JavaScript.</p>
+            <ul>
+              <li>Responsive layouts</li>
+              <li>Animations & interactions</li>
+              <li>Accessibility-first</li>
+            </ul>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon"><i class="fa-solid fa-server"></i></div>
+            <h3>Backend with PHP</h3>
+            <p>Secure, lightweight PHP backends — contact forms, APIs and CMS glue.</p>
+            <ul>
+              <li>Form handling & validation</li>
+              <li>REST-style endpoints</li>
+              <li>Email automation</li>
+            </ul>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon"><i class="fa-solid fa-palette"></i></div>
+            <h3>UI / UX Design</h3>
+            <p>Clean, modern design systems focused on clarity and conversion.</p>
+            <ul>
+              <li>Wireframes & mockups</li>
+              <li>Design tokens</li>
+              <li>Prototyping</li>
+            </ul>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon"><i class="fa-solid fa-bolt"></i></div>
+            <h3>Performance & SEO</h3>
+            <p>Fast load times and search-friendly markup out of the box.</p>
+            <ul>
+              <li>Core Web Vitals</li>
+              <li>Meta & schema</li>
+              <li>Image optimization</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section alt">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="kicker">Selected work</span>
+          <h2>My <span class="gradient-text">Projects</span></h2>
+          <p>A few things I've built recently.</p>
+        </header>
+
+        <div class="cards-grid projects-grid">
+          <article class="card project reveal">
+            <div class="project-thumb gradient-1">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </div>
+            <div class="project-body">
+              <h3>ShopSphere</h3>
+              <p>Full-featured e-commerce storefront with PHP backend and cart system.</p>
+              <div class="tags"><span>HTML</span><span>CSS</span><span>JS</span><span>PHP</span></div>
+              <div class="project-links">
+                <a href="#" class="btn btn-sm btn-primary"><i class="fa-solid fa-up-right-from-square"></i> Live</a>
+                <a href="#" class="btn btn-sm btn-ghost"><i class="fa-brands fa-github"></i> Code</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project reveal">
+            <div class="project-thumb gradient-2">
+              <i class="fa-solid fa-cloud-sun"></i>
+            </div>
+            <div class="project-body">
+              <h3>Weatherly</h3>
+              <p>Real-time weather app using a public API with location search.</p>
+              <div class="tags"><span>HTML</span><span>CSS</span><span>JS</span><span>API</span></div>
+              <div class="project-links">
+                <a href="#" class="btn btn-sm btn-primary"><i class="fa-solid fa-up-right-from-square"></i> Live</a>
+                <a href="#" class="btn btn-sm btn-ghost"><i class="fa-brands fa-github"></i> Code</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project reveal">
+            <div class="project-thumb gradient-3">
+              <i class="fa-solid fa-list-check"></i>
+            </div>
+            <div class="project-body">
+              <h3>TaskFlow</h3>
+              <p>Drag-and-drop task manager with PHP persistence and dark mode.</p>
+              <div class="tags"><span>JS</span><span>PHP</span><span>MySQL</span></div>
+              <div class="project-links">
+                <a href="#" class="btn btn-sm btn-primary"><i class="fa-solid fa-up-right-from-square"></i> Live</a>
+                <a href="#" class="btn btn-sm btn-ghost"><i class="fa-brands fa-github"></i> Code</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project reveal">
+            <div class="project-thumb gradient-4">
+              <i class="fa-solid fa-comments"></i>
+            </div>
+            <div class="project-body">
+              <h3>ChatLite</h3>
+              <p>Real-time chat demo powered by PHP + WebSockets.</p>
+              <div class="tags"><span>PHP</span><span>WS</span><span>JS</span></div>
+              <div class="project-links">
+                <a href="#" class="btn btn-sm btn-primary"><i class="fa-solid fa-up-right-from-square"></i> Live</a>
+                <a href="#" class="btn btn-sm btn-ghost"><i class="fa-brands fa-github"></i> Code</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="section">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="kicker">My journey</span>
+          <h2>My <span class="gradient-text">Education</span></h2>
+          <p>Formal degrees and continuous learning.</p>
+        </header>
+
+        <ol class="timeline">
+          <li class="reveal">
+            <span class="dot"></span>
+            <div class="t-content">
+              <span class="t-date">2022 — 2025</span>
+              <h3>B.Sc. in Computer Science</h3>
+              <p>University of Example — Focused on web technologies, databases and software engineering.</p>
+            </div>
+          </li>
+          <li class="reveal">
+            <span class="dot"></span>
+            <div class="t-content">
+              <span class="t-date">2021 — 2022</span>
+              <h3>Higher Secondary (Science)</h3>
+              <p>Example College — Mathematics & Computer Science major.</p>
+            </div>
+          </li>
+          <li class="reveal">
+            <span class="dot"></span>
+            <div class="t-content">
+              <span class="t-date">2020</span>
+              <h3>Secondary School</h3>
+              <p>Example School — Graduated with distinction.</p>
+            </div>
+          </li>
+          <li class="reveal">
+            <span class="dot"></span>
+            <div class="t-content">
+              <span class="t-date">Ongoing</span>
+              <h3>Self-Learning</h3>
+              <p>freeCodeCamp, MDN, and open-source contributions to sharpen my craft.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section alt">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="kicker">Let's talk</span>
+          <h2>Contact <span class="gradient-text">Me</span></h2>
+          <p>Have a project in mind? Drop a message and I'll get back within 24 hours.</p>
+        </header>
+
+        <div class="contact-grid">
+          <div class="contact-info reveal">
+            <h3>Get in touch</h3>
+            <p><i class="fa-solid fa-envelope"></i> hello@yourname.dev</p>
+            <p><i class="fa-solid fa-location-dot"></i> Your City, Your Country</p>
+            <div class="socials">
+              <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+              <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+              <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+          </div>
+
+          <!-- PHP form posts to php/contact.php. On GitHub Pages the PHP won't run,
+               so we include a JS fallback that intercepts submit and shows a notice. -->
+          <form class="contact-form reveal" id="contactForm" action="php/contact.php" method="POST" novalidate>
+            <div class="field">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Jane Doe" required minlength="2" />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="jane@example.com" required />
+            </div>
+            <div class="field">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" placeholder="Project inquiry" required minlength="3" />
+            </div>
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required minlength="10"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">
+              <i class="fa-regular fa-paper-plane"></i> Send Message
+            </button>
+            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© <span id="year"></span> Your Name · Built with HTML, CSS, JS &amp; PHP.</p>
+      <a href="#home" class="to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+    </div>
+  </footer>
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
